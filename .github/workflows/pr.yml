@@ -1,0 +1,14 @@
+---
+name: Pull request build
+
+on:
+  pull_request:
+  
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.confi
+          npm i -g commitlint @commitlint/config-conventional
+          echo "${{ github.event.pull_request.title }}" | commitlint
