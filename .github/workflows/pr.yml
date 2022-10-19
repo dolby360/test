@@ -10,5 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
+          echo "module.exports = { extends: ['@commitlint/config-conventional'] };" > commitlint.config.js
           npm i -g commitlint @commitlint/config-conventional
           echo "${{ github.event.pull_request.title }}" | commitlint
